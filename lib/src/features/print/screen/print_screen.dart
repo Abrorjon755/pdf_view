@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../common/utils/context_extension.dart';
 import '../../home/bloc/home_bloc.dart';
@@ -15,6 +16,7 @@ class PrintScreen extends StatelessWidget {
       appBar: AppBar(
         leading: CupertinoNavigationBarBackButton(
           color: context.colors.onPrimary,
+          onPressed: () => context.pop(),
         ),
         backgroundColor: context.colors.primary,
         title: Text(
