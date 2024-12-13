@@ -103,9 +103,7 @@ class PrintScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            state.products
-                                .map((e) => e.price)
-                                .reduce((value, element) => value + element),
+                            "${state.products.map((e) => e.price.replaceAll("\$", "")).reduce((value, element) => (int.parse(value) + int.parse(element)).toString())}\$",
                             style: context.textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),

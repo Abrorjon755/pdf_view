@@ -157,9 +157,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                   style: myStyle,
                 ),
                 pw.Text(
-                  state.products
-                      .map((e) => e.price)
-                      .reduce((value, element) => value + element),
+                  "${state.products.map((e) => e.price.replaceAll("\$", "")).reduce((value, element) => (int.parse(value) + int.parse(element)).toString())}\$",
                   style: myStyle,
                 ),
               ],
@@ -175,10 +173,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         ),
       ),
     );
-    final file = File(
-        "/storage/emulated/0/Download/${state.products.first.name}${state.products.first.id}.pdf");
-    await file.writeAsBytes(await pdf.save());
-
+    saveToStorage(pdf, 1);
     emit(state.copyWith(status: Status.success));
+  }
+
+  Future<void> saveToStorage(pw.Document pdf, int i) async {
+    if (!await File(
+            "/storage/emulated/0/Download/${state.products.first.name}${state.products.first.id}$i.pdf")
+        .exists()) {
+      final file = File(
+          "/storage/emulated/0/Download/${state.products.first.name}${state.products.first.id}$i.pdf");
+      await file.writeAsBytes(await pdf.save());
+    } else {
+      saveToStorage(pdf, i++);
+    }
   }
 }
