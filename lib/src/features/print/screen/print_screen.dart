@@ -6,7 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../common/utils/context_extension.dart';
 import '../../home/bloc/home_bloc.dart';
 
-part '../mixin/print_screen_mixin.dart';
 
 class PrintScreen extends StatelessWidget {
   const PrintScreen({super.key});
