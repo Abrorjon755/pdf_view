@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../common/utils/context_extension.dart';
 import '../../home/bloc/home_bloc.dart';
 
+
 class PrintScreen extends StatelessWidget {
   const PrintScreen({super.key});
 
@@ -50,9 +51,7 @@ class PrintScreen extends StatelessWidget {
                 ),
               )
             : state.status.isLoading
-                ? const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  )
+                ? const CircularProgressIndicator.adaptive()
                 : ListView(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     children: [
